@@ -34,7 +34,7 @@ while True: #Pętla wyboru opcji. Wyjście z pętli to wybór 1 lub 2
             continue
 if player_input == 1:
     os.system('cls')
-    pass
+    import classobject
 else:
     print(colored('EXITING GAME', 'red'))
     sys.exit()
