@@ -12,6 +12,9 @@ class GameCard:
     def __repr__(self):
         return self.name
     
+    def change_location(self, current_location, destination):
+        destination.cardlist.append(current_location.cardlist.pop(self))
+    
 class Area:
     def __init__(self, name):
         self.name = name
