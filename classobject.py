@@ -16,6 +16,18 @@ class Area:
     def __init__(self, name):
         self.name = name
         self.cardlist = []
+    def __repr__(self):
+        presentation = {"Index" : [i + 1 for i in range(len(self.cardlist))],
+                        "Card Name" : [card.name for card in self.cardlist],
+                        'Color' : [card.color for card in self.cardlist],
+                        'Damage' : [card.damage for card in self.cardlist],
+                        'Gold' : [card.gold for card in self.cardlist],
+                        'Regen' : [card.regen for card in self.cardlist],
+                        'Cost' : [card.cost for card in self.cardlist]}
+        presentation = pandas.DataFrame(presentation)
+        presentation = tabulate(presentation, headers = 'keys', tablefmt='psql', showindex=False)
+        print(self.name.upper())
+        return presentation
         
 class Player:
     def __init__(self, name):
@@ -49,4 +61,5 @@ class Player:
             self.hand.cardlist.append(self.deck.cardlist.pop())
             drawcounter += 1
             
+
         
