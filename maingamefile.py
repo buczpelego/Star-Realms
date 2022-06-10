@@ -1,5 +1,6 @@
 from classobject import *
 from cards import *
+import os
 player1 = Player('Player 1')
 cpu = Player('CPU')
 market_deck = Area('Market Deck')
@@ -14,11 +15,37 @@ while market_counter < 5:
     market_counter += 1
 cards_bin = Area('Cards bin')
 
-while player1.health > 0 or cpu.health > 0:
+while player1.health > 0 and cpu.health > 0:
     print("PLAYER TURN")
     print(player1.hand)
+    print(player1.playarea)
     while True:
-        pass
+        player_input = input('Select card to play by index. Press "P" to proceed').upper()
+        if player_input.isnumeric() == False and player_input != 'P':
+            continue
+        elif player_input.isnumeric() == True:
+            player_input = int(player_input)
+            if player_input < 1 or player_input > len(player1.hand.cardlist):
+                continue
+            else:
+                chosen_card = player1.hand.cardlist[player_input - 1]
+                print(chosen_card)
+                chosen_card.change_location(player1.hand, player1.playarea)
+                os.system('cls')
+                print('PLAYER TURN')
+                print(player1.hand)
+                print(player1.playarea)
+                total_damage = [card.damage for card in player1.playarea.cardlist]
+                total_damage = sum(total_damage)
+                print('TOTAL DAMAGE: '+ str(total_damage))
+                total_gold = [card.gold for card in player1.playarea.cardlist]
+                total_gold = sum(total_gold)
+                print('TOTAL GOLD: ' + str(total_gold))
+                continue
+        else:
+            print('udało się procedować')
+            break
     break
 
-#w pliku classes dopracuj mechanikę zmiany lokacji przez karty
+
+#Opracować zadawanie obrażeń i kupowanie kart.

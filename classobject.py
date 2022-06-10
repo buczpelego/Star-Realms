@@ -13,12 +13,15 @@ class GameCard:
         return self.name
     
     def change_location(self, current_location, destination):
-        destination.cardlist.append(current_location.cardlist.pop(self))
+        index = current_location.cardlist.index(self)
+        destination.cardlist.append(current_location.cardlist.pop(index))
+        return
     
 class Area:
     def __init__(self, name):
         self.name = name
         self.cardlist = []
+        
     def __repr__(self):
         presentation = {"Index" : [i + 1 for i in range(len(self.cardlist))],
                         "Card Name" : [card.name for card in self.cardlist],
