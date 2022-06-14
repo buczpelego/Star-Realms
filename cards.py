@@ -33,5 +33,14 @@ supply_bot2 = GameCard('Supply bot', 'red', 3, 0, 2, 0)
 mercantile_bot = GameCard('Mercantile bot', 'red', 1, 0, 1, 0)
 battle_mech = GameCard('Battle-mech', 'red', 5, 4, 0, 0)
 
-
-
+#Explorer
+explorer1 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer2 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer3 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer4 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer5 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer6 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer7 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer8 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer9 = GameCard('Explorer', 'white', 2, 0, 2, 0)
+explorer10 = GameCard('Explorer', 'white', 2, 0, 2, 0)
