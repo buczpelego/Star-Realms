@@ -57,7 +57,7 @@ while player1.health > 0 and cpu.health > 0:
             print(market_place)
             print('If you can\'t buy any card form market, you can buy Explorer (BY PRESSING - 6) for 2 gold (Explorer gives 2 gold)')
             #wybór karty z marketu
-            while True:
+            while True: #Pętla przerywa się w momencie zakończenia kupowania kart
                 player_input = input('Select card to buy by pressing index number. Press "P" to proceed').upper()
                 if player_input.isnumeric() == False and player_input != 'P':
                     continue
@@ -65,7 +65,7 @@ while player1.health > 0 and cpu.health > 0:
                     player_input = int(player_input)
                     if player_input < 1:
                         continue
-                    elif player_input == 6:
+                    elif player_input == 6: #kupowanie karty odkrywcy
                         if player_total_gold < 2:
                             print('not enough gold')
                             continue
@@ -86,7 +86,7 @@ while player1.health > 0 and cpu.health > 0:
                                 continue
                     elif player_input > 6:
                         continue
-                    else:
+                    else: #kupowanie karty z marketu
                         chosen_card = market_place.cardlist[player_input - 1]
                         if player_total_gold < chosen_card.cost:
                             print('not enough gold to buy ' + str(chosen_card.name))
@@ -104,8 +104,6 @@ while player1.health > 0 and cpu.health > 0:
                             continue
                         continue
                 else:
-                    print(market_place)
-                    print(player1.discard)
                     break #od tąd wchodzi zadawanie obrażeń przeciwnikowi
             break
     break
