@@ -104,9 +104,26 @@ while player1.health > 0 and cpu.health > 0:
                             continue
                         continue
                 else:
-                    break #od tąd wchodzi zadawanie obrażeń przeciwnikowi
-            break
-    break
+                    cpu.health -= player_total_damage #od tąd wchodzi zadawanie obrażeń przeciwnikowi
+                    print('Enemy Health Pool: ' +str(cpu.health))
+                for i in range(len(player1.hand.cardlist)):
+                    player1.hand.cardlist[-1].change_location(player1.hand, player1.discard)
+
+                for i in range(len(player1.playarea.cardlist)):
+                    player1.playarea.cardlist[-1].change_location(player1.playarea, player1.discard)    
+                for i in range(5): #dobranie kart z deku do ręki
+                    player1.deck.cardlist[-1].change_location(player1.deck, player1.hand)
+                    if len(player1.deck.cardlist) > 0:
+                        continue
+                    else: #warunek w przypadku końca kart w deku - przeniesienie i przetasowanie kart z discardu do decku
+                        for i in range(len(player1.discard.cardlist)):
+                            player1.discard.cardlist[-1].change_location(player1.discard, player1.deck)
+                            random.shuffle(player1.deck.cardlist)
+
+                             
+                break
+        break    
+    
 
 
-#Opracować zadawanie obrażeń przeciwnikowi
+#Dodać wyświetlanie HP gracza, rozpocząć wprowadzanie tury CPU
