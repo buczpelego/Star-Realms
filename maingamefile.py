@@ -47,6 +47,7 @@ while player1.health > 0 and cpu.health > 0:
             #Przejście do kupowania kart z marketu
             os.system('cls')
             print('PLAYER TURN')
+            print('Player HP: ' + str(player1.health))
             print(player1.playarea)
             player_total_damage = [card.damage for card in player1.playarea.cardlist]
             player_total_damage = sum(player_total_damage)
@@ -108,7 +109,6 @@ while player1.health > 0 and cpu.health > 0:
                     print('Enemy Health Pool: ' +str(cpu.health))
                 for i in range(len(player1.hand.cardlist)):
                     player1.hand.cardlist[-1].change_location(player1.hand, player1.discard)
-
                 for i in range(len(player1.playarea.cardlist)):
                     player1.playarea.cardlist[-1].change_location(player1.playarea, player1.discard)    
                 for i in range(5): #dobranie kart z deku do ręki
@@ -118,11 +118,36 @@ while player1.health > 0 and cpu.health > 0:
                     else: #warunek w przypadku końca kart w deku - przeniesienie i przetasowanie kart z discardu do decku
                         for i in range(len(player1.discard.cardlist)):
                             player1.discard.cardlist[-1].change_location(player1.discard, player1.deck)
-                            random.shuffle(player1.deck.cardlist)
-
-                             
+                            random.shuffle(player1.deck.cardlist)             
                 break
-        break    
+        player_input = input('press any key')
+        break
+    os.system('cls')
+    print('CPU Turn')
+    for i in range(len(cpu.hand.cardlist)):
+        cpu.hand.cardlist[-1].change_location(cpu.hand, cpu.playarea)
+    cpu_total_gold = [card.gold for card in cpu.playarea.cardlist]
+    cpu_total_gold = sum(cpu_total_gold)
+    cpu_total_damage = [card.damage for card in cpu.playarea.cardlist]
+    cpu_total_damage = sum(cpu_total_damage)
+    print(cpu.playarea)
+    print('CPU gold: ' + str(cpu_total_gold))
+    print('CPU damage: ' + str(cpu_total_damage))
+    print(market_place)
+    player_input = input('press any key')
+    os.system('cls')
+    print('CPU Turn')
+    #mechanika kupna karty przez CPU:
+    while cpu_total_gold > 0:
+        cards_avalible_to_buy = []
+        for card in market_place.cardlist:
+            if card.cost <= cpu_total_gold:
+                cards_avalible_to_buy.append(card)
+            else:
+                continue #! może być błąd
+        #opracować system wyboru najdroższej karty spośród możliwych do kupienia.
+    break
+        
     
 
 
